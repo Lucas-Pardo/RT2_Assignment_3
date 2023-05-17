@@ -25,7 +25,7 @@ grab_index = 0
 rot = -1
 """ int (1, -1): Direction of rotation. 1 for clockwise, -1 for anticlockwise."""
 
-alternatingRot = (False, True)
+alternatingRot = (False, False)
 """ boolean tuple: Whether to alternate rotation direction after (grabbing, releasing) or not."""
 
 max_time_ratio = 5

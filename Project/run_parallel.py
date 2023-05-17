@@ -4,7 +4,7 @@ from time import sleep
 from alive_progress import alive_bar
 
 max_threads = 6
-iterations = 50
+iterations = 100
 
 def run_process(*args):
     cmd = ["python2", "run.py", "assignment.py"] + list(args)
@@ -38,4 +38,4 @@ def base_process(file=None, dt=0.05):
                     
             sleep(0.2)
             
-base_process("data/baseRFT_10.txt", 0.10)
+base_process("data/base_10.txt", 0.10)
