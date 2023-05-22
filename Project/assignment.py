@@ -204,18 +204,19 @@ def check_failure():
                     d = sqrt(tokens[i].dist**2 + tokens[j].dist**2 - 2 * tokens[i].dist * tokens[j].dist * cos(radians(theta)))
                     
                     if tokens[i].info.code in pair_dist:
-                        if pair_dist[tokens[i].info.code] > d:
-                            pair_dist[tokens[i].info.code] = d
+                        aux = [tokens[j].info.code == x[1] for x in pair_dist.values()]
+                        if pair_dist[tokens[i].info.code][0] > d and not any(aux):
+                            pair_dist[tokens[i].info.code] = [d, tokens[j].info.code]
                     else:
-                        pair_dist[tokens[i].info.code] = d           
+                        pair_dist[tokens[i].info.code] = [d, tokens[j].info.code]          
         sleep(dt)
         t += dt
         turn(random.uniform(-speed, speed) / 10)
     stop()
-    print(pair_dist)
+    # print(pair_dist)
     for d in pair_dist.values():
-        # Check distance threshold, maybe a little more relaxed?
-        if d > d_th:
+        # Check distance threshold
+        if d[0] > d_th:
             return True
     return False
         
